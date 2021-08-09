@@ -2,8 +2,8 @@
 
 ### Starting the App
 In order to run this application, execute: 
-`docker-compose up` or `docker-compose up -d` 
-if you want to run container in the detached mode. 
+`docker-compose up` (or `docker-compose up -d` 
+if you want to run container in the detached mode). 
 This will start two containers:
 1. *app* - contains  the main logic of the application
 2. *mongo* - database, where the data from csv files is stored 
@@ -19,6 +19,7 @@ GET `http://localhost:8080/information?city1=cityName1&city2=cityName1`
 If connection between the given cities does not exist 404 response will be return.  
 
 **Example Of Existing Connection**
+
 Request: 
 GET `http://localhost:8080/information?city1=Munich&city2=Warsaw`
 
