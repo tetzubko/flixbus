@@ -1,6 +1,6 @@
 # Flixbus
 
-###Starting the App
+### Starting the App
 In order to run this application, execute: 
 `docker-compose up` or `docker-compose up -d` 
 if you want to run container in the detached mode. 
@@ -10,7 +10,7 @@ This will start two containers:
 
 After the application is started, you can access it on the port 8080 of your machine.
 
-###Request's Syntax 
+### Request's Syntax 
 If you want to get information about connection between two cities send the 
 following request: 
 
