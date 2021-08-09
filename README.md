@@ -20,7 +20,6 @@ If connection between the given cities does not exist 404 response will be retur
 
 **Example Of Existing Connection**
 
-Request: 
 GET `http://localhost:8080/information?city1=Munich&city2=Warsaw`
 
 Response:
@@ -34,7 +33,7 @@ Response:
 ```
 
 **Example Of Not Existing Connection**
-Request: 
+
 GET `http://localhost:8080/information?city1=Munich&city2=NotExistingCity`
 
 Response:
