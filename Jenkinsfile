@@ -8,7 +8,6 @@ pipeline {
             steps{
                 script{
                     previousBuild = currentBuild.getPreviousBuild()
-                    sh 'echo ${previousBuild.currentResult}'
                     sh 'echo ${previousBuild.getCurrentResult()}'
                     sh 'echo ${previousBuild.getResult()}'
                 }
