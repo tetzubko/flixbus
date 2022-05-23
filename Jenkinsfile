@@ -8,6 +8,7 @@ pipeline {
             steps{
                 echo "Current build status ${currentBuild.currentResult}"
                 echo "Previous build status ${currentBuild.getPreviousBuild().result}"
+                echo "Previous build variables ${currentBuild.getPreviousBuild().buildVariables}"
                 sh 'echo ${currentBuild}'
                 sh 'echo ${TENANT_ID}'
                 sh '''
