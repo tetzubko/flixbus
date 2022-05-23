@@ -8,8 +8,8 @@ pipeline {
             steps{
                 script{
                     previousBuild = currentBuild.getPreviousBuild()
-                    sh 'echo ${previousBuild.getCurrentResult()}'
                     sh 'echo ${previousBuild.getResult()}'
+                    sh 'echo ${currentBuild.getCurrentResult()}'
                 }
                 sh 'echo ${TENANT_ID}'
                 sh '''
