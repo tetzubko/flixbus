@@ -7,8 +7,7 @@ pipeline {
         stage('Build') {
             steps{
                 script{
-                    previousBuild = currentBuild.getPreviousBuild().getResult()
-                    currentBuild = currentBuild.getCurrentResult()
+                  
                     sh 'echo ${previousBuild}'
                     sh 'echo ${currentBuild}'
                 }
