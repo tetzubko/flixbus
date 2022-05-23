@@ -15,11 +15,6 @@ pipeline {
 
         sh 'echo ${currentBuild}'
         sh 'echo ${TENANT_ID}'
-        sh ''
-        '
-        echo "Multiline shell steps works too"
-        ls - lah ''
-        '
       }
     }
   }
