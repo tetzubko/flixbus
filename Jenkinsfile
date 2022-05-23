@@ -19,7 +19,7 @@ pipeline {
         }
     
     }
-}
+
 def test(){
     script{
         def previousBuildEnv = currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value
@@ -30,3 +30,4 @@ def test(){
     
         }
     }
+}
