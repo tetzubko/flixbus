@@ -6,8 +6,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        if (${currentBuild.getPreviousBuild().getRawBuild().actions.find { it instanceof ParametersAction }?.parameters.find {it.name == 'TENANT_ID'}?.value}
- == params.TENANT_ID) {
+        a = ${currentBuild.getPreviousBuild().getRawBuild().actions.find { it instanceof ParametersAction }?.parameters.find {it.name == 'TENANT_ID'}?.value}
+        if (a == params.TENANT_ID) {
           echo "Current build status ${currentBuild.currentResult}"
           echo "Previous build status ${currentBuild.getPreviousBuild().result}"
           echo "TENANT_ID ${currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value}"
