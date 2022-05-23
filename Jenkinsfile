@@ -1,3 +1,6 @@
+previousBuild = currentBuild.getPreviousBuild().getResult()
+currentBuild = currentBuild.getCurrentResult()
+
 pipeline {
     agent any
     parameters {
@@ -7,7 +10,6 @@ pipeline {
         stage('Build') {
             steps{
                 script{
-                  
                     sh 'echo ${previousBuild}'
                     sh 'echo ${currentBuild}'
                 }
