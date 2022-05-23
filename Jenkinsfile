@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        script{
         previousBuildEnv = currentBuild.getPreviousBuild().getRawBuild().actions.find { it instanceof ParametersAction }?.parameters.find {it.name == 'TENANT_ID'}?.value
         if (previousBuildEnv == ${TENANT_ID}) {
           echo "Current build status ${currentBuild.currentResult}"
@@ -15,6 +16,7 @@ pipeline {
 
         sh 'echo ${currentBuild}'
         sh 'echo ${TENANT_ID}'
+      }
       }
     }
   }
