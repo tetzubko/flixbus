@@ -17,7 +17,9 @@ pipeline {
             }
             }
         }
-    def test(){
+    
+    }
+def test(){
         def previousBuildEnv = currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value
         if(previousBuildEnv == ${TENANT_ID}){
             echo "Current build status ${currentBuild.currentResult}"
@@ -25,5 +27,4 @@ pipeline {
             echo "TENANT_ID ${currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value}"                
     
         }
-    }
     }
