@@ -1,6 +1,3 @@
-def previousBuild = currentBuild.getPreviousBuild().getResult()
-def currentBuild = currentBuild.getCurrentResult()
-
 pipeline {
     agent any
     parameters {
@@ -9,10 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps{
-                script{
-                    sh 'echo ${previousBuild}'
-                    sh 'echo ${currentBuild}'
-                }
+                echo "Previous build status ${currentBuild.currentStatus}"
+                sh 'echo ${currentBuild}'
                 sh 'echo ${TENANT_ID}'
                 sh '''
                     echo "Multiline shell steps works too"
