@@ -7,7 +7,7 @@ pipeline {
     stage('Build') {
       steps {
         script{
-          def b = ${currentBuild.currentResult} == ${currentBuild.getPreviousBuild().result}
+          b = currentBuild.currentResult == currentBuild.getPreviousBuild().result
         if ("aaa" == "${params.TENANT_ID}".toString() && b) {
           echo "Current build status ${currentBuild.currentResult}"
           echo "Previous build status ${currentBuild.getPreviousBuild().result}"
