@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps{
-                echo "Previous build status ${currentBuild.currentResult}"
+                echo "Current build status ${currentBuild.currentResult}"
+                echo "Previous build status ${currentBuild.getPreviousBuild().currentResult}"
                 sh 'echo ${currentBuild}'
                 sh 'echo ${TENANT_ID}'
                 sh '''
