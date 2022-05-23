@@ -1,5 +1,5 @@
-previousBuild = currentBuild.getPreviousBuild().getResult()
-currentBuild = currentBuild.getCurrentResult()
+def previousBuild = currentBuild.getPreviousBuild().getResult()
+def currentBuild = currentBuild.getCurrentResult()
 
 pipeline {
     agent any
