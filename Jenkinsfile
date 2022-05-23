@@ -7,8 +7,10 @@ pipeline {
         stage('Build') {
             steps{
                 script{
-                    previousBuild = currentBuild.getPreviousBuild().getResult()
-                    sh 'echo ${previousBuild}'
+                    previousBuild = currentBuild.getPreviousBuild()
+                    sh 'echo ${previousBuild.currentResult}'
+                    sh 'echo ${previousBuild.getCurrentResult()}'
+                    sh 'echo ${previousBuild.getResult()}'
                 }
                 sh 'echo ${TENANT_ID}'
                 sh '''
