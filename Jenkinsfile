@@ -6,10 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps{
-                echo "Current build status ${currentBuild.currentResult}"
-                echo "Previous build status ${currentBuild.getPreviousBuild().result}"
-                echo "Previous build variables ${currentBuild.getPreviousBuild().buildVariables}"
-                echo "TENANT_ID ${currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value}"
+                test()
                 
                 sh 'echo ${currentBuild}'
                 sh 'echo ${TENANT_ID}'
@@ -20,4 +17,13 @@ pipeline {
             }
             }
         }
+    def test(){
+        def previousBuildEnv = currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value
+        if(previousBuildEnv == ${TENANT_ID}){
+            echo "Current build status ${currentBuild.currentResult}"
+            echo "Previous build status ${currentBuild.getPreviousBuild().result}"
+            echo "TENANT_ID ${currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value}"                
+    
+        }
+    }
     }
