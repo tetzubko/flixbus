@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        script{
         if ("aaa" == "${params.TENANT_ID}".toString()) {
           echo "Current build status ${currentBuild.currentResult}"
           echo "Previous build status ${currentBuild.getPreviousBuild().result}"
@@ -14,6 +15,7 @@ pipeline {
 
         sh 'echo ${currentBuild}'
         sh 'echo ${TENANT_ID}'
+      }
       }
     }
   }
