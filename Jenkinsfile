@@ -6,7 +6,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                def previousBuild = currentBuild.getPreviousBuild()
                 sh 'echo ${TENANT_ID}'
+                sh 'echo ${previousBuild.result}'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
