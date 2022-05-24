@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    string(name: 'TENANT_ID', description: 'Tenant ID for the test', defaultValue: '', trim: true)
+    string(name: 'CLUSTER', description: 'Cluster for the test', defaultValue: '', trim: true)
   }
   stages {
     stage('Build') {
@@ -10,20 +10,18 @@ pipeline {
          
           
           previousBuild=currentBuild.getPreviousBuild()
-          while(previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value != params.TENANT_ID){
+          while(previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'CLUSTER'}?.value != params.CLUSTER){
             previousBuild=previousBuild.getPreviousBuild()
             echo "ururururb"
           }
           
-          b = currentBuild.currentResult == previousBuild.result
+          b = currentBuild.currentResult != previousBuild.result
         if (b) {
-          echo "Current build status ${currentBuild.currentResult}"
-          echo "Previous build status ${currentBuild.getPreviousBuild().result}"
-          echo "TENANT_ID ${currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value}"
+          echo "notify!"
         }
-
-        sh 'echo ${currentBuild}'
-        sh 'echo ${TENANT_ID}'
+          else{
+            echo "not notify!"
+          }
       }
       }
     }
