@@ -8,7 +8,7 @@ pipeline {
       steps {
         script{
          
-          
+          call()
           previousBuild=currentBuild.getPreviousBuild()
           while(previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'CLUSTER'}?.value != params.CLUSTER){
             previousBuild=previousBuild.getPreviousBuild()
