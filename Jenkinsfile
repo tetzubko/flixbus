@@ -30,7 +30,7 @@ pipeline {
 }
 
 def acall() {
-  if (1=2){
+  if (1==2){
     echo "Hello,"
   }else{
     return
