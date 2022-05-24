@@ -7,6 +7,13 @@ pipeline {
     stage('Build') {
       steps {
         script{
+          
+          count = 0
+          while(count<3){
+            echo "count ${count}"
+            count++
+          }
+          
           c = currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value
           b = currentBuild.currentResult == currentBuild.getPreviousBuild().result
         if (c == params.TENANT_ID && b) {
