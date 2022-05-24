@@ -28,3 +28,7 @@ pipeline {
   }
 
 }
+
+def call() {
+    echo "Hello,"
+}
