@@ -11,8 +11,7 @@ pipeline {
           acall()
           previousBuild=currentBuild.getPreviousBuild()
           while(previousBuild && previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'CLUSTER'}?.value != params.CLUSTER){
-            previousBuild = previousBuild.getPreviousBuild() ? previousBuild.getPreviousBuild()
-              
+            previousBuild = previousBuild.getPreviousBuild() ?: previousBuild.getPreviousBuild()
             echo "ururururb"
           }
           
