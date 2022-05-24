@@ -9,7 +9,7 @@ pipeline {
         script{
           c = currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value
           b = currentBuild.currentResult == currentBuild.getPreviousBuild().result
-        if (c == "${params.TENANT_ID}".toString() && b) {
+        if (c == params.TENANT_ID && b) {
           echo "Current build status ${currentBuild.currentResult}"
           echo "Previous build status ${currentBuild.getPreviousBuild().result}"
           echo "TENANT_ID ${currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value}"
