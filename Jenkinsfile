@@ -7,6 +7,7 @@ pipeline {
     stage('Build') {
       steps {
         script{
+          c = currentBuild.getPreviousBuild().getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value
           b = currentBuild.currentResult == currentBuild.getPreviousBuild().result
         if ("aaa" == "${params.TENANT_ID}".toString() && b) {
           echo "Current build status ${currentBuild.currentResult}"
