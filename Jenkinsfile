@@ -12,7 +12,7 @@ pipeline {
           previousBuild=currentBuild.getPreviousBuild()
           while(previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value != params.TENANT_ID){
             previousBuild=currentBuild
-            count++
+            echo "ururururb"
           }
           
           b = currentBuild.currentResult == previousBuild.result
