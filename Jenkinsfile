@@ -11,7 +11,7 @@ pipeline {
           
           previousBuild=currentBuild.getPreviousBuild()
           while(previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'TENANT_ID'}?.value != params.TENANT_ID){
-            previousBuild=currentBuild
+            previousBuild=previousBuild.getPreviousBuild()
             echo "ururururb"
           }
           
