@@ -8,7 +8,12 @@ pipeline {
       steps {
         script{
          
-          acall()
+          if (acall()){
+            echo "yes print"
+          }else{
+            echo "no print"
+          }
+          
           previousBuild=currentBuild.getPreviousBuild()
           while(previousBuild && previousBuild.getRawBuild().actions.find{ it instanceof ParametersAction }?.parameters.find{it.name == 'CLUSTER'}?.value != params.CLUSTER){
             if(!previousBuild.getPreviousBuild()){
@@ -33,11 +38,5 @@ pipeline {
 }
 
 def acall() {
-  if (1==2){
-    echo "Hello,"
-  }else{
-    return
-  }
-  echo "yiiyiyiii"
-    
+  return false
 }
